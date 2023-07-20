@@ -19,9 +19,16 @@ public class BlueRentalPage {
     @FindBy(xpath = "//*[@name='email']")
     public WebElement email;
 
-    @FindBy(xpath = "//*[@id='dropdown-basic-button']")
-    public WebElement verify;
+    //Login oldugu dogrulama icin alinan locate(Orn:Sam Walker)
+    @FindBy(xpath = "(//*[@type='button'])[1]")
+    public WebElement loginVerify;
 
+    @FindBy(xpath = "//*[@role='alert']")
+    public WebElement mesajVerify;
 
+    @FindBy(xpath = "//*[.='Logout']")
+    public WebElement logOut;
 
+    @FindBy(xpath = "//*[.='OK']")
+    public WebElement okButonu;
 }

@@ -31,7 +31,7 @@ public class Driver {
         driver'i ayni sayfada return et.
              */
         /*
-        Properties dosyasinda key olarak belirttigimiz browser'a asagidaki ornekteki gibi hangi degeri
+        .properties dosyasinda key olarak belirttigimiz browser'a asagidaki ornekteki gibi hangi degeri
         belirtirsek testlerimiz o browser ile calisir.
          */
 
