@@ -20,14 +20,21 @@ public class C01_NegatifTest {
 
     @Test
     public void test01() {
+
+        //BlueRental Sayfasina gidelim
         //https://www.bluerentalcars.com/ adresine gidelim negatif senaryo ile login olamadığımızı test edelim
         Driver.getDriver().get(ConfigReader.getProperty("blueRentalUrl"));
-        BlueRentalPage blueRentalPage = new BlueRentalPage();
-        blueRentalPage.login.click();
-        blueRentalPage.email.sendKeys(ConfigReader.getProperty("fakeEmail"), Keys.TAB,
+        //Login butonuna tiklayiniz
+        BlueRentalPage rentalPage = new BlueRentalPage();
+        rentalPage.login.click();
+        rentalPage.email.sendKeys(ConfigReader.getProperty("fakeEmail"), Keys.TAB,
                                                   ConfigReader.getProperty("fakePassword"),Keys.ENTER);
 
-        ReusableMethods.visibleWait(blueRentalPage.mesajVerify,5);
-        Assert.assertTrue(blueRentalPage.mesajVerify.isDisplayed());
+        //Hata mesajinin gorunur oldugunu dogrula
+        ReusableMethods.visibleWait(rentalPage.mesajVerify,5);
+        Assert.assertTrue(rentalPage.mesajVerify.isDisplayed());
+
+        //Sayfayi kapatiniz
+        Driver.closeDriver();
     }
 }
