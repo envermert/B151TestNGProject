@@ -18,7 +18,7 @@ public class C01_NegatifTest {
             //User with email fake@bluerentalcars.com not found
 
 
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
 
         //BlueRental Sayfasina gidelim

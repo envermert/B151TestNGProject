@@ -9,7 +9,7 @@ import techproed.utilities.Driver;
 import techproed.utilities.ReusableMethods;
 
 public class C04_PozitifTest {
-    @Test
+    @Test(groups = "smoke")
     public void test01() {
 
 //        Acceptance Criteria:
@@ -25,7 +25,7 @@ public class C04_PozitifTest {
         ReusableMethods.bekle(1);
         blueRentalPage.email.sendKeys(ConfigReader.getProperty("blueRentalEmail"), Keys.TAB,
                                                   ConfigReader.getProperty("blueRentalPassword"),Keys.ENTER);
-
+        ReusableMethods.bekle(2);
         //Giris yapildigini dogrulayiniz
         Assert.assertTrue(blueRentalPage.loginVerify.getText().contains("Jack"));
         ReusableMethods.bekle(3);
