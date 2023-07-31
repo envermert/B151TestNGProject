@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Paralel Calistirma" parallel="methods" thread-count="3">
+        <classes>
+            <class name="techproed.tests.day29_XMLFiles.XMLFileParalelCalistirma">
+                <methods>
+                    <include name="test01"/>
+                    <include name="test02"/>
+                    <include name="test03"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+<!-- XML ile testlerimizi eszamanli test sayisi kadar calistirmak istersek,
+ oncelikle testlerimizi buna gore organize etmeliyiz her method icin sorunsuz calisabilmesi icin
+ methodlarda driver ayarlarini ayri ayri yapmamizda fayda var.
+ XML file da <test tagi icine parametre olarak paralel="methods" ve kac browserda calistirmak istersek
+ thread-count="3" ayarlamasini yaparak testleri paralel calistirmis oluruz. Class seviyesinde paralel
+ calistirmak istersek <suite tagi icine paralel="class" olarak belirtiriz.-->

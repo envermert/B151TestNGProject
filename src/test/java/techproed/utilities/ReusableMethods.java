@@ -1,9 +1,14 @@
 package techproed.utilities;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,8 +16,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-public class ReusableMethods {
 
+public class ReusableMethods {
 
     //HARD WAIT METHOD
     public static void bekle(int saniye) {
@@ -99,17 +104,17 @@ public class ReusableMethods {
         wait.until(ExpectedConditions.alertIsPresent());
 
     }
-
     //Tüm Sayfa ScreenShot
-    public static void tumSayfaResmi() {
+    public static String tumSayfaResmi(String name) {
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "TestOutput/screenshot/screenshot"+tarih+".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        String dosyaYolu = System.getProperty("user.dir") + "/target/Screenshots/" + name + tarih + ".png";
         try {
             FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return dosyaYolu;
     }
 
     //WebElement ScreenShot
@@ -176,5 +181,24 @@ public class ReusableMethods {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
+    }
+    //File Upload Robot Class
+    public static void uploadFile(String dosyaYolu){
+        try{
+            bekle(3);
+            StringSelection stringSelection = new StringSelection(dosyaYolu);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection,null);
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_V);
+            robot.delay(3000);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            robot.delay(3000);
+        }catch (Exception ignored){
+
+        }
     }
 }

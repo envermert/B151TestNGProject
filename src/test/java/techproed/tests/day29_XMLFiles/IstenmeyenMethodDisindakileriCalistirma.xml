@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="Istenmeyen Method Disindakileri Calistirma">
+        <classes>
+            <class name="techproed.tests.day25_POM.C01_DriverTest">
+                <methods>
+
+                    <exclude name="test02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.day24_Priority_DependsOnMethods_SoftAsserts.C01_Priority">
+                <methods>
+                    <include name="test01"/>
+                    <exclude name="test02"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+
+<!--Bir tane class'iniz var ve icinde 100 tane methodunuz var diyelim.
+Bu methodlardan calistirmak istemediginiz methodu <exculude> tagi ile devre disi birakip diger tum
+methodlari calistirabilirsiniz.-->
